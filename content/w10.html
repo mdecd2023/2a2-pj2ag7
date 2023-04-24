@@ -149,10 +149,27 @@ img.add_border {
 <p>2.How do you establish a connection between a Python script and CoppeliaSim using zmqRemoteAPI?</p>
 <p><span style="background-color: #00ff00;">ans:</span><span>要使用 zmqRemoteAPI 在 Python 腳本和 CoppeliaSim 之間建立連接，首先需要在 CoppeliaSim 中啟用遠端 API 伺服器，通過勾選仿真選單中的 Remote API 選項。然後，在 Python 腳本中，您可以使用 PyZMQ 函式庫創建一個 socket，並使用 CoppeliaSim 執行的電腦的 IP 地址和端口號連接到遠端 API 伺服器。一旦建立了連接，您就可以使用遠端 API 函數與模擬進行交互。</span></p>
 <p>3.What are some common use cases for zmqRemoteAPI in CoppeliaSim?</p>
-<p><span style="background-color: #00ff00;">ans:</span><span style="color: #000000; background-color: #ffffff;"><strong>zmqRemoteAPI是一種用於在CoppeliaSim和其他程序之間傳輸數據的協議。它可以用於遠程控制場景、傳輸數據、腳本自動化和多機器人協調等方面。它提供了一個靈活且易於使用的界面，用於與CoppeliaSim的場景交互。</strong></span></p>
+<p><span style="background-color: #00ff00;">ans:</span><span style="color: #000000; background-color: #ffffff;">zmqRemoteAPI是一種用於在CoppeliaSim和其他程序之間傳輸數據的協議。它可以用於遠程控制場景、傳輸數據、腳本自動化和多機器人協調等方面。它提供了一個靈活且易於使用的界面，用於與CoppeliaSim的場景交互。</span></p>
 <p>4.What are the advantages and disadvantages of using zmqRemoteAPI compared to other methods of communication between Python and CoppeliaSim?</p>
 <span style="background-color: #00ff00;">ans:</span>相較於其他 Python 和 CoppeliaSim 之間通訊方法，使用 zmqRemoteAPI 的優點包括高性能、低延遲和靈活性。zmqRemoteAPI 允許客戶端和模擬之間進行高效實時的通訊，並支援多種程式語言。然而，使用 zmqRemoteAPI 需要一定的網路程式設計知識，可能不像其他通訊方法（例如 ROS）那麼簡單易用。
 <p>5.Can you give an example of a project or task that you could complete using zmqRemoteAPI in CoppeliaSim?</p>
+<p><span style="background-color: #00ff00;">ans:<span style="background-color: #ffffff;"></span></span></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from zmqRemoteApi import RemoteAPIClient
+import keyboard
+
+client = RemoteAPIClient('localhost', 23000)
+
+print('Program started')
+sim = client.getObject('sim')
+
+# Define the size and position of the cuboid
+size = [1, 1, 1]
+position = [0, 0, 0.5]
+
+# Create the cuboid
+cuboid = sim.createPureShape(0, 8, size, 1, None)
+sim.setObjectPosition(cuboid, -1, position)</pre>
+<p>這個程式可以在coppeliasim環境中生成一個邊長為1的正方形，localhost要換成要操控的計算機的ip位址，若要操控本地則不用改，用localhost就好。</p>
 </div><br />w9 << <a href='w9.html'>Previous</a> <a href='jitsi.html'>Next</a> >> jitsi</div>
         
     <!-- footer -->
