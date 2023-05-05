@@ -174,8 +174,17 @@ ball_handle = sim.getObjectHandle("Sphere")
 sim.setObjectSpecialProperty(ball_handle, sim.objectspecialproperty_detectable_all)</pre>
 <p></p>
 <p>4.第一版實體記分板足球遊戲(<a href="/downloads/pj2ag7_zmq_bubbleRob.7z">pj2ag7_zmq_bubbleRob.7z</a>)</p>
-<p> 1.目前的足球遊戲的球還是採用回到中心的方法</p>
-<p> 2.球員則改成不會回到原來的地方(如果球員在中心得分會被回到中心的球撞飛)</p><h1>Brython</h1>
+<p>    1.目前的足球遊戲的球還是採用回到中心的方法</p>
+<p>    2.球員則改成不會回到原來的地方(如果球員在中心得分會被回到中心的球撞飛)</p>
+<p>5.第二版足球遊戲(足球隨機生成)(<a href="/downloads/pj2ag7_zmq_bubbleRob2.7z">pj2ag7_zmq_bubbleRob2.7z</a>)</p>
+<p>    1.將上一坂的球改成進球刪除並隨機生成(場景中原還沒有球，由zmq_bubbleRob程式生成)</p>
+<p>    2.球員依然有可能被撞飛，如果球剛好隨機到球員的位置</p>
+<p>    3.球員1(zmq_bubbleRob1)必須要先執行，因為只需要一顆球不用生成兩次，但球不先生成程式取不到東西也就是 sim.getObject('/Sphere')但沒有物件叫做Sphere就會出錯</p>
+<p>    4.因為我是zmq加coppeliasim lua的寫法，若我是像上一版本一樣計分板跟球的程式都用lua寫，就沒有問題，但這個版本我將球的控制用<span>zmq，所以我在刪除球時發現zmq有一點延遲，記分板已經得了五六分了球才刪除，所以我在lua中加入</span></p>
+<p><span>sim.setObjectSpecialProperty(ball, sim.modelproperty_not_detectable)</span></p>
+<p><span>將可偵測關掉</span></p>
+<p>    </p>
+<p></p><h1>Brython</h1>
 <p><a href="https://en.wikipedia.org/wiki/Python_(programming_language)">https://en.wikipedia.org/wiki/Python_(programming_language)</a></p>
 <h4>Examples:</h4>
 <p style="padding-left: 30px;"><a href="https://gist.github.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d">https://gist.github.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d</a></p>
