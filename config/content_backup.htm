@@ -183,6 +183,32 @@ sim.setObjectSpecialProperty(ball, sim.objectspecialproperty_detectable)
 <p>    4.因為我是zmq加coppeliasim lua的寫法，若是像上一版本一樣計分板跟球的程式都用lua寫，就沒有問題，但這個版本我將球的控制用<span>zmq，所以我在刪除球時發現zmq有一點延遲，就是記分板已經得了五六分了球才刪除，所以我在lua中加入</span></p>
 <p><span>sim.setObjectSpecialProperty(ball, sim.modelproperty_not_detectable)</span></p>
 <p><span>在得分後將可偵測關掉，然後再刪除重新生成球，這樣就只會得一分，而且可以決定在球框裡再刪除，這樣就會有進球的感覺，不會像之前一樣碰到感測器就消失</span></p>
+<p><span>6.修改第五點第三項之問題，利以下程式判斷Sphere是否存在，若不存在則exist值為</span><span>1</span></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">try:
+    Sphere= sim.getObject('/Sphere')
+except Exception as e:
+    print("Failed to get object: ", e)
+    exist=1</pre>
+<p></p>
+<p>因此可用if迴圈來判定是否生成物件Sphere，如下:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">size = [0.2, 0.2, 0.2]
+position = [0, 0, 0.5]
+options = 8
+exist=0
+try:
+    Sphere= sim.getObject('/Sphere')
+except Exception as e:
+    print("Failed to get object: ", e)
+    exist=1
+if exist==1:	
+	ball = sim.createPureShape(1, options, size, 1, None)
+	sim.setObjectPosition(ball, -1, position)
+	ball = sim.getObject('/Sphere')
+	sim.setObjectSpecialProperty(ball, sim.objectspecialproperty_detectable)</pre>
+<p><br/><br/></p>
+<p><span></span></p>
+<p> </p>
+<p></p>
 <p>    </p>
 <p></p><h1>Brython</h1>
 <p><a href="https://en.wikipedia.org/wiki/Python_(programming_language)">https://en.wikipedia.org/wiki/Python_(programming_language)</a></p>
