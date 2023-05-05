@@ -151,12 +151,12 @@ img.add_border {
 <p>3.用python生成球並開啟Detectable</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">size = [0.2, 0.2, 0.2]
 position = [0, 0, 0.5]
-options = 8 
-# Create the cuboid
+options = 8
 ball = sim.createPureShape(1, options, size, 1, None)
 sim.setObjectPosition(ball, -1, position)
-ball_handle = sim.getObjectHandle("Sphere")
-sim.setObjectSpecialProperty(ball_handle, sim.objectspecialproperty_detectable_all)</pre>
+ball = sim.getObject('/Sphere')
+sim.setObjectSpecialProperty(ball, sim.objectspecialproperty_detectable)
+</pre>
 <p></p>
 <p>4.第一版實體記分板足球遊戲(<a href="./../downloads/pj2ag7_zmq_bubbleRob.7z">pj2ag7_zmq_bubbleRob.7z</a>)</p>
 <p>    1.目前的足球遊戲的球還是採用回到中心的方法</p>
@@ -165,9 +165,9 @@ sim.setObjectSpecialProperty(ball_handle, sim.objectspecialproperty_detectable_a
 <p>    1.將上一坂的球改成進球刪除並隨機生成(場景中原還沒有球，由zmq_bubbleRob程式生成)</p>
 <p>    2.球員依然有可能被撞飛，如果球剛好隨機到球員的位置</p>
 <p>    3.球員1(zmq_bubbleRob1)必須要先執行，因為只需要一顆球不用生成兩次，但球不先生成程式取不到東西也就是 sim.getObject('/Sphere')但沒有物件叫做Sphere就會出錯</p>
-<p>    4.因為我是zmq加coppeliasim lua的寫法，若我是像上一版本一樣計分板跟球的程式都用lua寫，就沒有問題，但這個版本我將球的控制用<span>zmq，所以我在刪除球時發現zmq有一點延遲，記分板已經得了五六分了球才刪除，所以我在lua中加入</span></p>
+<p>    4.因為我是zmq加coppeliasim lua的寫法，若是像上一版本一樣計分板跟球的程式都用lua寫，就沒有問題，但這個版本我將球的控制用<span>zmq，所以我在刪除球時發現zmq有一點延遲，就是記分板已經得了五六分了球才刪除，所以我在lua中加入</span></p>
 <p><span>sim.setObjectSpecialProperty(ball, sim.modelproperty_not_detectable)</span></p>
-<p><span>將可偵測關掉</span></p>
+<p><span>在得分後將可偵測關掉，然後再刪除重新生成球，這樣就只會得一分，而且可以決定在球框裡再刪除，這樣就會有進球的感覺，不會像之前一樣碰到感測器就消失</span></p>
 <p>    </p>
 <p></p><br />ag2 << <a href='ag2.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython</div>
         
