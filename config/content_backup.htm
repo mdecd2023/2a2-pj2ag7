@@ -162,7 +162,18 @@ end</pre>
 <p><a href="/downloads/scoreboard.zip">記分板檔案</a></p>
 <p></p>
 <p>2.記分板程式(<a href="/downloads/scoreboard.txt">scoreboard</a>)</p>
-<p><img alt="" height="315" src="/downloads/scoreboard.png" width="500"/></p><h1>Brython</h1>
+<p><img alt="" height="315" src="/downloads/scoreboard.png" width="500"/></p>
+<p>3.用python生成球並開啟Detectable</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">size = [0.2, 0.2, 0.2]
+position = [0, 0, 0.5]
+options = 8 
+# Create the cuboid
+ball = sim.createPureShape(1, options, size, 1, None)
+sim.setObjectPosition(ball, -1, position)
+ball_handle = sim.getObjectHandle("Sphere")
+sim.setObjectSpecialProperty(ball_handle, sim.objectspecialproperty_detectable_all)</pre>
+<p></p>
+<p>4.第一版實體記分板()</p><h1>Brython</h1>
 <p><a href="https://en.wikipedia.org/wiki/Python_(programming_language)">https://en.wikipedia.org/wiki/Python_(programming_language)</a></p>
 <h4>Examples:</h4>
 <p style="padding-left: 30px;"><a href="https://gist.github.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d">https://gist.github.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d</a></p>
