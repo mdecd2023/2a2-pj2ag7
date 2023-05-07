@@ -296,7 +296,13 @@ if exist==1:
 <p>9.第四版足球遊戲(新場景)(<a href="/downloads/pj2ag7_zmq_bubbleRob4.7z">pj2ag7_zmq_bubbleRob4.7z</a>)</p>
 <p>    1.導入新場景</p>
 <p>    2.更改球員顏色</p>
-<p>    3.調整進球刪除的位置</p><h1>Brython</h1>
+<p>    3.調整進球刪除的位置</p>
+<p>10.第五版足球遊戲(<a href="/downloads/pj2ag7_zmq_bubbleRob5.7z">pj2ag7_zmq_bubbleRob5.7z</a>)</p>
+<p>    1.解決隨機球會撞飛球員的問題</p>
+<p>    2.產生新問題，在函式跳出去判斷隨機球位置時，會有一段球被刪除但還沒生成的時間會讓</p>
+<p>ball = sim.getObject('/Sphere')這行程式出錯(已解決)</p>
+<p>    3.發現新問題，在球生成時球員不能再中心，因為生成球跟設定位置式兩個動作，球會先生成在中心，然後再換到設定的位置，雖時間很短但還是會撞飛球員(在其他位置不會被撞飛，跟第一點問題不同)</p>
+<p>    4.未知問題，有時候進球時某一程式會出錯而停止(概率性出現)出錯的行數也不唯一</p><h1>Brython</h1>
 <p><a href="https://en.wikipedia.org/wiki/Python_(programming_language)">https://en.wikipedia.org/wiki/Python_(programming_language)</a></p>
 <h4>Examples:</h4>
 <p style="padding-left: 30px;"><a href="https://gist.github.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d">https://gist.github.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d</a></p>
