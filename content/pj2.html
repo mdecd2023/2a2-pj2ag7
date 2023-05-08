@@ -207,7 +207,11 @@ if exist==1:
 <p>    2.產生新問題，在函式跳出去判斷隨機球位置時，會有一段球被刪除但還沒生成的時間會讓</p>
 <p>ball = sim.getObject('/Sphere')這行程式出錯(已解決)</p>
 <p>    3.發現新問題，在球生成時球員不能再中心，因為生成球跟設定位置式兩個動作，球會先生成在中心，然後再換到設定的位置，雖時間很短但還是會撞飛球員(在其他位置不會被撞飛，跟第一點問題不同)</p>
-<p>    4.未知問題，有時候進球時某一程式會出錯而停止(概率性出現)出錯的行數也不唯一</p><br />ag2 << <a href='ag2.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython</div>
+<p>    4.未知問題，有時候進球時某一程式會出錯而停止(概率性出現)出錯的行數也不唯一</p>
+<p>11.第六版足球遊戲(<a href="./../downloads/pj2ag7_zmq_bubbleRob6.7z">pj2ag7_zmq_bubbleRob6.7z</a>)</p>
+<p>    1.新增裁判程式將兩球員程式中生成球和刪除球的部分整合到裡面</p>
+<p>    2.第十點第四項的未知問題是因為刪除球和生成球的程式分成兩個，所以在獲取球的物件時會衝突(球被刪除時，另一台的程式找不到球這個物件)</p>
+<p> </p><br />ag2 << <a href='ag2.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython</div>
         
     <!-- footer -->
       <div class="container">
